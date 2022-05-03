@@ -35,10 +35,12 @@ function Header() {
           <span className="line-two">Prime</span>
         </div>
 
-        <div className="header-basket">
-          <ShoppingBasketIcon />
-          <span className="line-two header-basket-count">0</span>
-        </div>
+        <Link to="/checkout">
+          <div className="header-basket">
+            <ShoppingBasketIcon />
+            <span className="line-two header-basket-count">0</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
