@@ -1,0 +1,56 @@
+.checkout-right .subtotal-container {
+  background-color: white;
+  padding: 20px 0 15px 0;
+  margin-bottom: 20px;
+}
+
+.checkout-right .subtotal-body {
+  padding: 0 20px 5px 20px;
+}
+
+.checkout-right .subtotal-body-inner {
+  padding-bottom: 14px;
+}
+
+.checkout-right .subtotal-body .subtotal-calculation {
+  margin-bottom: 4px;
+}
+
+.checkout-right .subtotal-body .subtotal-label-buybox {
+  font-size: 18px;
+}
+
+.checkout-right .subtotal-body .subtotal-amount-buybox {
+  font-weight: 700;
+}
+
+.checkout-right .subtotal-body .subtotal-amount-buybox .currency,
+.checkout-right .subtotal-body .subtotal-amount-buybox .amount-minor {
+  font-size: 13px;
+  position: relative;
+  top: -0.75em;
+}
+
+.checkout-right .subtotal-body .subtotal-amount-buybox .amount-major {
+  font-size: 28px;
+}
+
+.checkout-right .subtotal-body .is-gift-present {
+  margin-bottom: 12px;
+}
+
+.checkout-right .subtotal-body .is-gift-present > label {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.checkout-right .subtotal-body .proceed-to-checkout button {
+  line-height: 24px;
+  font-size: 13px;
+  background-color: #ffd814;
+  border-color: #fcd200;
+  border-radius: 8px;
+  border-style: initial;
+  width: 100%;
+}
