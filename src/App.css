@@ -1,3 +1,14 @@
 .main {
   background-color: #eaeded;
 }
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #007185;
+}
+
+a.clickable {
+  color: unset;
+}
