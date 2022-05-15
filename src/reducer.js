@@ -2,12 +2,47 @@ export const initialState = {
   cart: [],
 };
 
+// SELECTOR
+export const getCartTotal = (cart) =>
+  cart?.reduce((amount, item) => item.price * item.quantity + amount, 0);
+
+export const getCartQuantity = (cart) =>
+  cart?.reduce((quantity, item) => item.quantity + quantity, 0);
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case "addToCart":
+      const exists = state.cart.some((item) => item.id === action.item.id);
+      if (exists) {
+        return {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.item.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cart: [...state.cart, action.item],
+        };
+      }
+
+    case "removeFromCart":
       return {
         ...state,
-        cart: [...state.cart, action.item],
+        cart: state.cart.filter((item) => item.id !== action.id),
+      };
+
+    case "changeItemQuantity":
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.id
+            ? { ...item, quantity: action.newQuantity }
+            : item
+        ),
       };
 
     default:

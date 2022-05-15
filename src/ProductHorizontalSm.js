@@ -3,6 +3,7 @@ import "./ProductHorizontalSm.css";
 import { useStateValue } from "./StateProvider";
 
 function ProductHorizontalSm({
+  id,
   productName,
   image,
   rating,
@@ -16,12 +17,13 @@ function ProductHorizontalSm({
 
   const addToCart = () => {
     dispatch({
-      type: "ADD_TO_CART",
+      type: "addToCart",
       item: {
-        /* id: id, */
+        id: id,
         productName: productName,
         image: image,
         price: price,
+        quantity: 1,
       },
     });
   };

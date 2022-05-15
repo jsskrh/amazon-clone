@@ -11,9 +11,11 @@
   display: flex;
 }
 
-.product-horizontal-sm .image-container {
+.product-horizontal-sm .image-container,
+.product-horizontal-sm .image-container img {
   height: 100px;
   width: 100px;
+  object-fit: contain;
 }
 
 .product-horizontal-sm .product-body {

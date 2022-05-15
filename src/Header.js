@@ -7,6 +7,7 @@ import { useStateValue } from "./StateProvider";
 
 function Header() {
   const [{ cart }, dispatch] = useStateValue();
+
   return (
     <div className="header">
       <Link to="/">
