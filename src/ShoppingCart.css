@@ -1,55 +1,55 @@
-.checkout-left .shopping-cart .cart-header-row {
+.shopping-cart .cart-header-row {
   border-bottom: 1px solid #e7e7e7;
 }
 
-.checkout-left .shopping-cart .cart-heading {
+.cart .shopping-cart .cart-heading {
   font-size: 28px;
   font-weight: 500;
 }
 
-.checkout-left .shopping-cart .deselect-all {
+.cart .shopping-cart .deselect-all {
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
 }
 
-.checkout-left .empty-cart .empty-cart-heading {
+.cart .empty-cart .empty-cart-heading {
   margin: 12px 0 4px 0;
   font-weight: 400;
   font-size: 28px;
   line-height: 36px;
 }
 
-.checkout-left .text-container {
+.cart .text-container {
   margin-bottom: 14px;
 }
 
-.checkout-left .cart-text {
+.cart .cart-text {
   font-size: 14px;
   line-height: 20px;
 }
 
-.checkout-left .subtotal-container {
+.cart .subtotal-container {
   margin-left: auto;
   display: flex;
   justify-content: flex-end;
 }
 
-.checkout-left .subtotal-label-buybox {
+.cart .subtotal-label-buybox {
   font-size: 18px;
 }
 
-.checkout-left .subtotal-amount-buybox {
+.cart .subtotal-amount-buybox {
   font-weight: 700;
 }
 
-.checkout-left .subtotal-amount-buybox .currency,
-.checkout-left .subtotal-amount-buybox .amount-minor {
+.cart .subtotal-amount-buybox .currency,
+.cart .subtotal-amount-buybox .amount-minor {
   font-size: 13px;
   position: relative;
   top: -0.75em;
 }
 
-.checkout-left .subtotal-amount-buybox .amount-major {
+.cart .subtotal-amount-buybox .amount-major {
   font-size: 28px;
 }
