@@ -13,8 +13,6 @@ function ProductHorizontalSm({
 }) {
   const [{ cart }, dispatch] = useStateValue();
 
-  console.log(cart);
-
   const addToCart = () => {
     dispatch({
       type: "addToCart",
