@@ -36,6 +36,12 @@ const reducer = (state, action) => {
         cart: state.cart.filter((item) => item.id !== action.id),
       };
 
+    case "emptyCart":
+      return {
+        ...state,
+        cart: [],
+      };
+
     case "changeItemQuantity":
       return {
         ...state,
