@@ -6,6 +6,8 @@ import CartItem from "./CartItem";
 import "./Payment.css";
 import { getCartTotal } from "./reducer";
 import { useStateValue } from "./StateProvider";
+import { db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore/lite";
 
 function Payment() {
   const [{ cart, user }, dispatch] = useStateValue();
@@ -35,6 +37,7 @@ function Payment() {
   }, [cart]);
 
   console.log("The secret is >>> ", clientSecret);
+  console.log("User >>> ", user.uid);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,8 +47,22 @@ function Payment() {
       .confirmCardPayment(clientSecret, {
         payment_method: { card: elements.getElement(CardElement) },
       })
-      .then(({ paymentIntent }) => {
+      .then(async ({ paymentIntent }) => {
         // payment intent = payment confirmation
+
+        const orderRef = doc(
+          db,
+          "users",
+          user?.uid,
+          "orders",
+          paymentIntent.id
+        );
+        await setDoc(orderRef, {
+          cart: cart,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
@@ -108,6 +125,8 @@ function Payment() {
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                 </button>
               </div>
+
+              {/* errors */}
               {error && <div>{error}</div>}
             </form>
           </div>

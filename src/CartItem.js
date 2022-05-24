@@ -10,7 +10,7 @@ function useToggle(initState = false) {
   return [state, (_) => setState(!state)];
 }
 
-function CartItem({ id, productName, image, price }) {
+function CartItem({ id, productName, image, price, quantity, orderPage }) {
   const [{ cart }, dispatch] = useStateValue();
 
   const removeFromCart = () => {
@@ -41,25 +41,20 @@ function CartItem({ id, productName, image, price }) {
       <div className="items-container-inner">
         <div className="product-item">
           <div className="product-item-container">
-            <div className="item-checkbox">
-              {/* <input
-                type="checkbox"
-                name="item-selector"
-                value="item-selector"
-                className="checkbox-hidden"
-                id="activeCartItem"
-              /> */}
-              <Checkbox
-                checked={activeCartItem}
-                onClick={toggleActiveCartItem}
-                on={
-                  <CheckBoxIcon className="checkbox-placeholder cb-checked" />
-                }
-                off={
-                  <CheckBoxOutlineBlankIcon className="checkbox-placeholder cb-unchecked" />
-                }
-              />
-            </div>
+            {!orderPage && (
+              <div className="item-checkbox">
+                <Checkbox
+                  checked={activeCartItem}
+                  onClick={toggleActiveCartItem}
+                  on={
+                    <CheckBoxIcon className="checkbox-placeholder cb-checked" />
+                  }
+                  off={
+                    <CheckBoxOutlineBlankIcon className="checkbox-placeholder cb-unchecked" />
+                  }
+                />
+              </div>
+            )}
             <div className="image-container">
               <a href="#" className="item-image-link">
                 <img src={image} alt="Item" className="item-image" />
@@ -80,50 +75,64 @@ function CartItem({ id, productName, image, price }) {
                   <span className="amount-minor">92</span> */}
                   <span className="amount-major">{price}</span>
                 </p>
-                <p className="in-stock">In Stock</p>
-                <div className="is-gift-present">
-                  <input
-                    type="checkbox"
-                    id="isGift"
-                    name="isGift"
-                    value="gift"
-                  />
-                  <label for="isGift">
-                    Is a gift <a href="#">Learn more</a>
-                  </label>
-                </div>
+                {!orderPage && (
+                  <div>
+                    <p className="in-stock">In Stock</p>
+                    <div className="is-gift-present">
+                      <input
+                        type="checkbox"
+                        id="isGift"
+                        name="isGift"
+                        value="gift"
+                      />
+                      <label for="isGift">
+                        Is a gift <a href="#">Learn more</a>
+                      </label>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="item-action">
-                <div className="quantity-container">
-                  <span className="quantity-placeholder">
-                    Qty: {checkItemQuantity(id)}
-                  </span>
-                  <ArrowDropDownIcon className="dropdown-arrow" />
-                  <select
-                    name="quantity"
-                    id="quantity"
-                    value={checkItemQuantity(id)}
-                    /* onChange={changeItemQuantity} */
-                  >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10+</option>
-                  </select>
+              {orderPage ? (
+                <div className="item-action">
+                  <div className="quantity-container">
+                    <span className="quantity-placeholder">
+                      Qty: {quantity}
+                    </span>
+                  </div>
                 </div>
-                <div className="separator"></div>
-                <a href="#" onClick={removeFromCart}>
-                  Delete
-                </a>
-                <div className="separator"></div>
-                <a href="#">Save for later</a>
-              </div>
+              ) : (
+                <div className="item-action">
+                  <div className="quantity-container">
+                    <span className="quantity-placeholder">
+                      Qty: {checkItemQuantity(id)}
+                    </span>
+                    <ArrowDropDownIcon className="dropdown-arrow" />
+                    <select
+                      name="quantity"
+                      id="quantity"
+                      value={checkItemQuantity(id)}
+                      /* onChange={changeItemQuantity} */
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10+</option>
+                    </select>
+                  </div>
+                  <div className="separator"></div>
+                  <a href="#" onClick={removeFromCart}>
+                    Delete
+                  </a>
+                  <div className="separator"></div>
+                  <a href="#">Save for later</a>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ import { useStateValue } from "./StateProvider";
 import Payment from "./Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Orders from "./Orders";
 
 /* const location = useLocation(); */
 const stripePromise = loadStripe(
@@ -62,6 +63,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="/*" element={<Home />} />
           </Routes>
         </div>
