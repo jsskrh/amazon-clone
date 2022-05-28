@@ -1,14 +1,7 @@
 import "./App.css";
 import Header from "./Header";
 import Home from "./Home";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import { useEffect } from "react";
@@ -19,13 +12,13 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Orders from "./Orders";
 
-/* const location = useLocation(); */
 const stripePromise = loadStripe(
   "pk_test_51HDhgKLaiTqOxKULrwu4c6bA4kvN74wnU1A8eYPl96prqh38N8HkRg1AdBRe06vnjDzmpDC2fOVMrmdQyforQ9Ko00VQyaJnk5"
 );
 
 function App() {
   const [{}, dispatch] = useStateValue();
+  const location = useLocation();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -47,28 +40,25 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="app">
-        {/* {location.pathname !== "/login" && <Header />} */}
-        <Header />
-        <div className="main">
-          <Routes>
-            <Route
-              path="/payment"
-              element={
-                <Elements stripe={stripePromise}>
-                  <Payment />
-                </Elements>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/*" element={<Home />} />
-          </Routes>
-        </div>
+    <div className="app">
+      {location.pathname !== "/login" && <Header />}
+      <div className="main">
+        <Routes>
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <Payment />
+              </Elements>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/*" element={<Home />} />
+        </Routes>
       </div>
-    </Router>
+    </div>
   );
 }
 
