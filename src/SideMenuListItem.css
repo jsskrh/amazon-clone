@@ -1,0 +1,61 @@
+.side-menu .side-menu-content .side-menu-lists li a,
+.sub-menu-back {
+  padding: 13px 20px 13px 36px;
+  display: flex;
+  align-items: center;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a:hover,
+.sub-menu-back:hover {
+  background-color: #eaeded;
+  color: #111;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a .side-menu-icon-logo {
+  width: 26px;
+  height: 15px;
+  display: flex;
+  align-content: center;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a .side-menu-icon-logo svg {
+  height: 15px;
+  margin-left: -5px;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a .side-menu-icon-logo .fi {
+  align-self: center;
+  max-height: 12px;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a span {
+  font-size: 14px;
+  color: #111;
+  font-weight: 500;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a:hover .arrow-forward-icon {
+  color: #111;
+}
+
+.side-menu .side-menu-content .side-menu-lists li a .arrow-forward-icon {
+  height: 15px;
+  width: 15px;
+  color: rgb(124, 124, 124);
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+.side-menu
+  .side-menu-content
+  .side-menu-lists
+  li
+  a
+  .arrow-forward-icon.collapse {
+  margin-left: 10px;
+  transform: rotate(90deg);
+}
+
+.side-menu .side-menu-content .side-menu-lists li a .arrow-forward-icon.expand {
+  transform: rotate(-90deg) !important;
+}

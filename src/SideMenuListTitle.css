@@ -1,0 +1,9 @@
+.side-menu .side-menu-content .side-menu-lists li .side-menu-item-title {
+  padding: 13px 20px 5px 36px;
+}
+
+.side-menu .side-menu-content .side-menu-lists li .side-menu-item-title h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}

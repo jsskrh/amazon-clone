@@ -1,0 +1,114 @@
+.side-menu {
+  height: 100vh;
+  width: 365px;
+  position: absolute;
+  background: white;
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.side-menu .menu-customer-profile {
+  background: #232f3e;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.side-menu .menu-customer-profile .account-circle-icon {
+  margin-left: 36px;
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+.side-menu .menu-customer-profile h2 {
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.side-menu .side-menu-content {
+  display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.side-menu .side-menu-lists {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+}
+
+.side-menu-lists.main-menu {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.side-menu-lists.main-menu.hidden {
+  transform: translateX(-100%);
+  visibility: hidden;
+}
+
+.side-menu .side-menu-content .side-menu-lists,
+.side-menu .side-menu-content .side-menu-lists ul {
+  padding-top: 7px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0;
+}
+
+.side-menu .side-menu-content .side-menu-lists ul.side-menu-compressed {
+  padding: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.side-menu
+  .side-menu-content
+  .side-menu-lists
+  ul.side-menu-compressed.side-menu-compressed-show {
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* .side-menu .sub-menu {
+    position: absolute;
+  } */
+
+/* .side-menu .side-menu-content .side-menu-lists li {
+  padding-bottom: 2px;
+} */
+
+.side-menu .side-menu-content .side-menu-lists li.side-menu-separator {
+  margin: 5px 0;
+  border-bottom: 1px solid #d5dbdb;
+  padding: 0;
+  height: 0;
+}
+
+.sub-menu-back {
+  border-bottom: 1px solid #d5dbdb;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  align-items: center;
+}
+
+.sub-menu-back .arrow-back {
+  height: 22px;
+  margin-right: 6px;
+  margin-left: -6px;
+}

@@ -1,0 +1,17 @@
+.sub-menu {
+  transform: translateX(100%);
+  visibility: hidden;
+}
+
+.sub-menu.show {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.sub-menu li {
+  list-style: none;
+}
+
+.sub-menu-back {
+  cursor: pointer;
+}
