@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideMenuListItem from "./SideMenuListItem";
 import SideMenuListTitle from "./SideMenuListTitle";
@@ -20,27 +20,18 @@ function SideMenu() {
   const [{ cart, user }, dispatch] = useStateValue();
 
   const [menu, setMenu] = useState("");
+  const [list, setList] = useState([]);
 
   const handleSideMenu = (target) => {
     setMenu(target);
   };
 
-  const programsAndFeatures = useRef();
-  const shopByDepartment = useRef();
-
-  const handleCollapsibleListToggle = (target) => {
-    const show = "side-menu-compressed-show";
-    switch (target) {
-      case "programsAndFeatures":
-        programsAndFeatures.current.classList.toggle(show);
-        break;
-
-      case "shopByDepartment":
-        shopByDepartment.current.classList.toggle(show);
-        break;
-
-      default:
-        break;
+  const toggleList = (target) => {
+    if (list.includes(target)) {
+      const arr = list.filter((dropdown) => dropdown !== target);
+      setList(arr);
+    } else {
+      setList([...list, target]);
     }
   };
 
@@ -93,7 +84,13 @@ function SideMenu() {
                 </div>
               );
             })}
-          <ul className="side-menu-compressed" ref={shopByDepartment}>
+          <ul
+            className={
+              list.includes("shopByDepartment")
+                ? "side-menu-compressed side-menu-compressed-show"
+                : "side-menu-compressed"
+            }
+          >
             <li className="side-menu-separator"></li>
             {subMenus
               .filter((menu) => {
@@ -108,13 +105,12 @@ function SideMenu() {
                 );
               })}
           </ul>
-          <div onClick={() => handleCollapsibleListToggle("shopByDepartment")}>
+          <div onClick={() => toggleList("shopByDepartment")}>
             <SideMenuListItem name="See All" collapsible />
           </div>
           <li className="side-menu-separator"></li>
 
           <SideMenuListTitle name="Programs & Features" />
-          {/* <SideMenuListItem name="Gift Cards" /> */}
           {subMenus
             .filter((menu) => {
               return menu.header === "Programs & Features";
@@ -140,15 +136,17 @@ function SideMenu() {
                 </div>
               );
             })}
-          {/* <SideMenuListItem name="Amazon Live" />
-          <SideMenuListItem name="International Shopping" /> */}
-          <ul className="side-menu-compressed" ref={programsAndFeatures}>
+          <ul
+            className={
+              list.includes("programsAndFeatures")
+                ? "side-menu-compressed side-menu-compressed-show"
+                : "side-menu-compressed"
+            }
+          >
             <li className="side-menu-separator"></li>
             <SideMenuListItem name="Amazon Second Chance" directLink />
           </ul>
-          <div
-            onClick={() => handleCollapsibleListToggle("programsAndFeatures")}
-          >
+          <div onClick={() => toggleList("programsAndFeatures")}>
             <SideMenuListItem name="See All" collapsible />
           </div>
           <li className="side-menu-separator"></li>
