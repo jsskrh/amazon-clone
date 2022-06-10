@@ -366,17 +366,11 @@
 }
 
 .nav-side-menu {
-  display: none;
-  transform: translateX(0);
-  transition: 5s;
+  display: block;
   position: absolute;
   top: 0;
   z-index: 1000;
   width: 100%;
-}
-
-.side-menu-visible {
-  display: block !important;
 }
 
 .nav-side-menu .close-icon {
@@ -391,24 +385,32 @@
 }
 
 .side-menu-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0);
   height: 100vh;
   width: 100%;
   position: absolute;
   z-index: 2000;
+  visibility: hidden;
   transition: all 0.3s ease-in-out;
 }
 
+.side-menu-overlay.show {
+  background-color: rgba(0, 0, 0, 0.8);
+  visibility: visible;
+}
+
 .header-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0);
   height: 100vh;
   width: 100%;
   position: absolute;
   z-index: 100;
-  display: none;
+  display: block;
+  visibility: hidden;
   transition: all 0.3s ease-in-out;
 }
 
 .header-overlay-visible {
-  display: block !important;
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.6);
 }

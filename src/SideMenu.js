@@ -10,7 +10,7 @@ import "./SideMenu.css";
 import SubSideMenu from "./SubSideMenu";
 import subMenus from "./submenusData";
 
-function SideMenu() {
+function SideMenu({ classes }) {
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
@@ -36,7 +36,7 @@ function SideMenu() {
   };
 
   return (
-    <div className="side-menu">
+    <div className={classes}>
       <Link to={"#"}>
         <div className="menu-customer-profile">
           <div className="customer-avatar-container">
@@ -87,7 +87,7 @@ function SideMenu() {
           <ul
             className={
               list.includes("shopByDepartment")
-                ? "side-menu-compressed side-menu-compressed-show"
+                ? "side-menu-compressed show"
                 : "side-menu-compressed"
             }
           >
@@ -139,7 +139,7 @@ function SideMenu() {
           <ul
             className={
               list.includes("programsAndFeatures")
-                ? "side-menu-compressed side-menu-compressed-show"
+                ? "side-menu-compressed show"
                 : "side-menu-compressed"
             }
           >

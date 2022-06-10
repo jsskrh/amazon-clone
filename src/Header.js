@@ -301,20 +301,18 @@ function Header() {
           </div>
         </div>
 
-        <div
-          className={
-            sideMenuVisible
-              ? "nav-side-menu side-menu-visible"
-              : "nav-side-menu"
-          }
-        >
-          <SideMenu />
+        <div className="nav-side-menu">
+          <SideMenu
+            classes={sideMenuVisible ? "side-menu show" : "side-menu"}
+          />
           <CloseIcon
             className="close-icon"
             onClick={() => handleSideMenuToggle(false)}
           />
           <div
-            className="side-menu-overlay"
+            className={
+              sideMenuVisible ? "side-menu-overlay show" : "side-menu-overlay"
+            }
             onClick={() => handleSideMenuToggle(false)}
           ></div>
         </div>

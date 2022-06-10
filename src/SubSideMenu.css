@@ -1,6 +1,7 @@
 .sub-menu {
   transform: translateX(100%);
   visibility: hidden;
+  height: 100%;
 }
 
 .sub-menu.show {

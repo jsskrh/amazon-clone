@@ -7,6 +7,14 @@
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 10px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+  visibility: hidden;
+  transform: translateX(-100%);
+}
+
+.side-menu.show {
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .side-menu .menu-customer-profile {
@@ -66,21 +74,18 @@
 
 .side-menu .side-menu-content .side-menu-lists ul.side-menu-compressed {
   padding: 0;
-  height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+  max-height: 0;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.3s cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-.side-menu
-  .side-menu-content
-  .side-menu-lists
-  ul.side-menu-compressed.side-menu-compressed-show {
-  height: auto;
+.side-menu .side-menu-content .side-menu-lists ul.side-menu-compressed.show {
+  max-height: 805px;
   opacity: 1;
   overflow: visible;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.4s cubic-bezier(0.4, 0, 0.6, 1);
 }
 
