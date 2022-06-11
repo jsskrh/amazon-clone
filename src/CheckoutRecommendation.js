@@ -39,7 +39,7 @@ function CheckoutRecommendation() {
           price={7572.61}
           rating={5}
           numberOfPruchases={5811}
-          lastClass={"last"}
+          last
           id={2003}
         />
       </div>

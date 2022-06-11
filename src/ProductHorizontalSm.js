@@ -9,7 +9,7 @@ function ProductHorizontalSm({
   rating,
   price,
   numberOfPruchases,
-  lastClass,
+  last,
 }) {
   const [{ cart }, dispatch] = useStateValue();
 
@@ -27,7 +27,9 @@ function ProductHorizontalSm({
   };
 
   return (
-    <div className={`product-horizontal-sm ${lastClass}`}>
+    <div
+      className={last ? "product-horizontal-sm last" : "product-horizontal-sm"}
+    >
       <div className="container">
         <div className="image-container">
           <img src={image} className="product-image" />
