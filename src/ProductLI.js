@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductLI.css";
+import "./styles/ProductLI.css";
 
 function ProductLI({ title, image, link }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductHorizontalSm.css";
+import "./styles/ProductHorizontalSm.css";
 import { useStateValue } from "./StateProvider";
 
 function ProductHorizontalSm({

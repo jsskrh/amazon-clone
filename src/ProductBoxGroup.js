@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductBoxGroup.css";
+import "./styles/ProductBoxGroup.css";
 import ProductBoxGroupItem from "./ProductBoxGroupItem.js";
 
 function ProductBoxGroup({ title, itemImage, itemName, link }) {

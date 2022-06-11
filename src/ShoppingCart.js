@@ -1,5 +1,5 @@
 import React from "react";
-import "./ShoppingCart.css";
+import "./styles/ShoppingCart.css";
 import { useStateValue } from "./StateProvider";
 import CartItem from "./CartItem";
 import { getCartQuantity, getCartTotal } from "./reducer";

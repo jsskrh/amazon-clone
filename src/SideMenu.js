@@ -6,7 +6,7 @@ import { useStateValue } from "./StateProvider";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LanguageIcon from "@mui/icons-material/Language";
 import { auth } from "./firebase";
-import "./SideMenu.css";
+import "./styles/SideMenu.css";
 import SubSideMenu from "./SubSideMenu";
 import subMenus from "./submenusData";
 

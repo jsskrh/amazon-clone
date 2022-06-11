@@ -2,7 +2,7 @@ import moment from "moment";
 import React from "react";
 import CurrencyFormat from "react-currency-format";
 import CartItem from "./CartItem";
-import "./Order.css";
+import "./styles/Order.css";
 
 function Order({ order }) {
   return (

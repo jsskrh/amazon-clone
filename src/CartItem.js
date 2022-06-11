@@ -1,5 +1,5 @@
 import React from "react";
-import "./CartItem.css";
+import "./styles/CartItem.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";

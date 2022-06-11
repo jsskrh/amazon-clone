@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductBoxGroupItem.css";
+import "./styles/ProductBoxGroupItem.css";
 
 function ProductBoxGroupItem({ itemImage, itemName }) {
   return (
