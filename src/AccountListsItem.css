@@ -1,0 +1,14 @@
+.nav-flyout .account-lists-content a:hover span {
+  text-decoration: underline;
+  color: #c7511f !important;
+}
+
+.nav-flyout .account-lists-item {
+  padding-bottom: 7px;
+  display: block;
+  font-size: 13px;
+  color: #444;
+  font-weight: 400;
+  white-space: normal;
+  word-wrap: break-word;
+}

@@ -11,6 +11,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import SideMenu from "./SideMenu";
+import AccountListsItem from "./AccountListsItem";
+
+/* rework nav dropdowns */
 
 function Header() {
   const handleAuthentication = () => {
@@ -23,13 +26,40 @@ function Header() {
 
   const [headerOverlayVisible, setHeaderOverlayVisibility] = useState(false);
   const [sideMenuVisible, setSideMenuVisibility] = useState(false);
+  const [flyover, setFlyover] = useState([]);
 
-  const handleHeaderOverlayToggle = (state) => {
-    if (state === true) {
-      document.body.style.overflow = "hidden";
+  /* const toggleFlyover = (target) => {
+    if (flyover.includes(target)) {
+      const arr = flyover.filter((dropdown) => dropdown !== target);
+      setFlyover(arr);
+      setHeaderOverlayVisibility(false);
+      console.log("Leave", flyover);
     } else {
-      document.body.style.overflow = "visible";
+      setFlyover([...flyover, target]);
+      setHeaderOverlayVisibility(true);
+      console.log("Enter", flyover);
     }
+  }; */
+
+  const mouseEnterFlyover = (target) => {
+    setFlyover([...flyover, target]);
+    setHeaderOverlayVisibility(true);
+    console.log("Enter", flyover);
+  };
+
+  const mouseLeaveFlyover = (target) => {
+    const arr = flyover.filter((dropdown) => dropdown !== target);
+    setFlyover(arr);
+    setHeaderOverlayVisibility(false);
+    console.log("Leave", flyover);
+  };
+
+  if (headerOverlayVisible === true) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "visible";
+  }
+  const handleHeaderOverlayToggle = (state) => {
     setHeaderOverlayVisibility(state);
   };
 
@@ -180,8 +210,8 @@ function Header() {
           <div className="header-nav">
             <Link
               to={"#"}
-              onMouseEnter={() => handleHeaderOverlayToggle(true)}
-              onMouseLeave={() => handleHeaderOverlayToggle(false)}
+              onMouseEnter={() => mouseEnterFlyover("nav-flyout-clang")}
+              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-clang")}
             >
               <div className="header-option nav-language-selector">
                 <span className="line-one hidden-line">-</span>
@@ -193,10 +223,10 @@ function Header() {
             </Link>
 
             <Link
-              to={!user && "/login"}
-              onClick={handleAuthentication}
-              onMouseEnter={() => handleHeaderOverlayToggle(true)}
-              onMouseLeave={() => handleHeaderOverlayToggle(false)}
+              to={"#"}
+              onMouseEnter={() => mouseEnterFlyover("nav-flyout-account-lists")}
+              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-account-lists")}
+              className="flyover-link"
             >
               <div className="header-option">
                 <span className="line-one">
@@ -230,6 +260,187 @@ function Header() {
               {/* <div className="header-basket-container">
           </div> */}
             </Link>
+          </div>
+        </div>
+
+        <div className="nav-flyout">
+          <div
+            className={
+              flyover.includes("nav-flyout-clang")
+                ? "nav-flyout-clang show"
+                : "nav-flyout-clang"
+            }
+            onMouseEnter={() => handleHeaderOverlayToggle(true)}
+            onMouseLeave={() => handleHeaderOverlayToggle(false)}
+          >
+            <div className="nav-flyout-arrow-container">
+              <div className="arrow-triangle"></div>
+            </div>
+            <div className="nav-flyout-clang-content">
+              <span className="clang-item">
+                Change language
+                <a href="#" className="clang-learn-more">
+                  Learn more
+                </a>
+              </span>
+              <span className="clang-item">
+                <div className="radio-container">
+                  <div className="radio-inactive active"></div>
+                </div>
+                <span>English - EN</span>
+              </span>
+
+              <div className="divider"></div>
+
+              <a href="#" className="clang-link">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>español - ES</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>العربية - AR</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>Deutsch - DE</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>עברית - HE</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>한국어 - KO</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>português - PT</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>中文 (简体) - ZH</span>
+                </span>
+              </a>
+              <a href="#">
+                <span className="clang-item">
+                  <div className="radio-container">
+                    <div className="radio-inactive"></div>
+                  </div>{" "}
+                  <span>中文 (繁體) - ZH</span>
+                </span>
+              </a>
+
+              <div className="divider currency-divider"></div>
+
+              <span className="clang-item">
+                Change currency
+                <a href="#" className="clang-learn-more">
+                  Learn more
+                </a>
+              </span>
+              <span className="clang-item space-between">
+                <span>$ - USD - US Dollar</span>
+                <a href="#" className="clang-change">
+                  Change
+                </a>
+              </span>
+
+              <div className="divider currency-divider"></div>
+
+              <span className="clang-item">
+                <span class="fi fi-us"></span> You are shopping on Amazon.com
+              </span>
+
+              <span className="clang-item">
+                <a href="#" className="clang-change-cr">
+                  Change country/region.
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div
+            className={
+              flyover.includes("nav-flyout-account-lists")
+                ? "nav-flyout-account-lists show"
+                : "nav-flyout-account-lists"
+            }
+            onMouseEnter={() => handleHeaderOverlayToggle(true)}
+            onMouseLeave={() => handleHeaderOverlayToggle(false)}
+          >
+            <div className="nav-flyout-arrow-container">
+              <div className="arrow-triangle"></div>
+            </div>
+            <div className="account-lists-content">
+              <div className="lists-container">
+                <h3 className="account-lists-title">Your Lists</h3>
+                <AccountListsItem placeholder="Create List" link="#" />
+                <AccountListsItem
+                  placeholder="Find a List or Registry"
+                  link="#"
+                />
+                <AccountListsItem
+                  placeholder="AmazonSmile Charity Lists"
+                  link="#"
+                />
+              </div>
+              <div className="account-container">
+                <h3 className="account-lists-title">Your Account</h3>
+                <AccountListsItem placeholder="Account" link="#" />
+                <AccountListsItem placeholder="Orders" link="/orders" />
+                <AccountListsItem placeholder="Recommendations" link="#" />
+                <AccountListsItem placeholder="Browsing History" link="#" />
+                <AccountListsItem placeholder="Watchlist" link="#" />
+                <AccountListsItem
+                  placeholder="Video Purchases & Rentals"
+                  link="#"
+                />
+                <AccountListsItem placeholder="Kindle Unlimited" link="#" />
+                <AccountListsItem placeholder="Content & Devices" link="#" />
+                <AccountListsItem
+                  placeholder="Subscribe & Save Items"
+                  link="#"
+                />
+                <AccountListsItem
+                  placeholder="Memberships & Subscriptions"
+                  link="#"
+                />
+                <AccountListsItem placeholder="Music Library" link="#" />
+                <AccountListsItem placeholder="Switch Accounts" link="#" />
+                <AccountListsItem
+                  placeholder="Sign Out"
+                  click={handleAuthentication}
+                  signOut
+                />
+              </div>
+            </div>
           </div>
         </div>
 

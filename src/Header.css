@@ -288,6 +288,191 @@
   align-self: flex-end;
 } */
 
+.nav-flyout {
+  position: relative;
+  z-index: 101;
+}
+
+.nav-flyout .nav-flyout-arrow-container {
+  position: absolute;
+  top: -9px;
+}
+
+.nav-flyout .nav-flyout-arrow-container .arrow-triangle {
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #fff;
+}
+
+.nav-flyout .nav-flyout-clang {
+  max-width: 500px;
+  width: 210px;
+  position: absolute;
+  left: 1069px;
+  top: -5px;
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 14px;
+  padding-bottom: 7px;
+  overflow: visible !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+  display: none;
+  border-radius: 3px;
+}
+
+.nav-flyout .nav-flyout-clang.show,
+.nav-flyout .nav-flyout-clang:hover {
+  display: flex;
+}
+
+.nav-flyout-clang .nav-flyout-arrow-container {
+  left: 35px;
+}
+
+.nav-flyout-clang div.radio-container,
+.nav-flyout-clang a div.radio-container {
+  height: 18px;
+  width: 18px;
+  margin-right: 6.5px;
+  border-radius: 50%;
+  border: 1px solid #bbb !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-flyout-clang .radio-container .radio-inactive {
+  height: 8px;
+  width: 8px;
+  background: #f08804;
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+.nav-flyout-clang .radio-container .radio-inactive.active,
+.nav-flyout-clang a:hover .radio-container .radio-inactive {
+  visibility: visible;
+}
+
+.nav-flyout-clang .clang-item {
+  display: flex;
+  padding-bottom: 7px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 400;
+  white-space: normal;
+  word-wrap: break-word;
+  align-self: center;
+  align-items: center;
+}
+
+.nav-flyout-clang .clang-learn-more {
+  font-size: 11px;
+  margin-left: 5px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.nav-flyout-clang .space-between {
+  justify-content: space-between;
+}
+
+.nav-flyout-clang .clang-change {
+  font-size: 12px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.nav-flyout-clang span.fi {
+  margin-right: 6.5px;
+}
+
+.nav-flyout-clang .clang-change-cr {
+  margin-left: 25px;
+  margin-top: 10px;
+  color: #0066c0;
+}
+
+.nav-flyout-clang .clang-change-cr:hover {
+  text-decoration: underline;
+}
+
+.nav-flyout-clang a:hover span,
+.nav-flyout-clang .clang-learn-more:hover,
+.nav-flyout-clang .clang-change:hover {
+  text-decoration: underline;
+  color: #c7511f !important;
+}
+
+.nav-flyout-clang .divider {
+  border-bottom: 1px solid #eee;
+  margin: 6px 0 9px 24px;
+}
+
+.nav-flyout-clang .divider.currency-divider {
+  margin-left: 0;
+}
+
+.nav-flyout .nav-flyout-account-lists {
+  max-width: 500px;
+  width: 470px;
+  position: absolute;
+  left: 882px;
+  top: -5px;
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 14px;
+  padding-bottom: 7px;
+  overflow: visible !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+  display: none;
+  justify-content: right;
+  border-radius: 3px;
+}
+
+.nav-flyout-account-lists .nav-flyout-arrow-container {
+  left: 361px;
+}
+
+.nav-flyout .nav-flyout-account-lists.show,
+.nav-flyout .nav-flyout-account-lists:hover {
+  display: flex;
+}
+
+/* .flyover-link {
+  padding-bottom: 10px;
+} */
+
+.nav-flyout .account-lists-content {
+  display: flex;
+  width: 460px;
+}
+
+.nav-flyout .account-lists-content > div {
+  width: 210px;
+}
+
+.nav-flyout .account-lists-content .lists-container {
+  margin-right: 20px;
+}
+
+.nav-flyout .account-lists-content .account-container {
+  padding-left: 20px;
+  border-left: 1px solid #eee;
+}
+
+.nav-flyout .account-lists-title {
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/*.............
+ HEADER BOTTOM 
+...............*/
+
 .header-bottom {
   display: flex;
   height: 39px;
