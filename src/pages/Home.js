@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.css";
-import ProductLI from "./ProductLI";
-import ProductBoxGroup from "./ProductBoxGroup";
+import "../styles/Home.css";
+import ProductLI from "../ProductLI";
+import ProductBoxGroup from "../ProductBoxGroup";
 
 function Home() {
   return (

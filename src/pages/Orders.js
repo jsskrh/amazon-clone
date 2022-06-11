@@ -1,9 +1,9 @@
 import { collection, doc, getDocs } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
-import { db } from "./firebase";
-import Order from "./Order";
-import "./Orders.css";
-import { useStateValue } from "./StateProvider";
+import { db } from "../firebase";
+import Order from "../Order";
+import "../styles/Orders.css";
+import { useStateValue } from "../StateProvider";
 
 function Orders() {
   const [{ cart, user }, dispatch] = useStateValue();

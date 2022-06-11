@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "../styles/Login.css";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
