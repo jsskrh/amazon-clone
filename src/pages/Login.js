@@ -16,8 +16,8 @@ function useToggle(initState = false) {
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const loginContinue = (e) => {
     e.preventDefault();

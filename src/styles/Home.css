@@ -6,22 +6,121 @@
 .home-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1500px;
+  max-width: 100%;
+}
+
+.home-carousel {
+  max-height: 230px;
+  /* height: 230px; */
+  transition: all 240ms ease-out 0s;
+}
+
+.home-carousel-inner {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.home-carousel .carousel-slider {
+  border-radius: 5px;
+  height: 100%;
+  width: 80px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  max-height: 250px;
+  cursor: pointer;
+}
+
+.home-carousel .carousel-slider:active,
+.home-carousel .carousel-slider:focus {
+  box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 4px #008296;
+}
+
+.home-carousel .carousel-slider-left {
+  padding-left: 3px;
+  left: 0;
+}
+
+.home-carousel .carousel-slider-right {
+  padding-right: 3px;
+  right: 0;
+}
+
+.home-carousel .slider-arrow-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-image {
+  display: flex;
+  position: relative;
+  top: 0;
+  height: 600px;
+  /* width: 7200px;
+  transform: translateX(-2880px) translateZ(0px); */
+}
+
+.home-carousel .slider-arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 12px;
+}
+
+.home-carousel .slider-arrow.left {
+  margin-left: 10px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.home-carousel .slider-arrow.right {
+  margin-right: 10px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.home-image-container {
+  text-align: center;
+  visibility: hidden;
+  position: absolute;
+  transition: all 0.3s;
+}
+
+.home-image-container.translate-left {
+  transform: translateX(-100%);
+}
+
+.home-image-container.translate-right {
+  transform: translateX(100%);
+}
+
+.home-image-container.active {
+  visibility: visible;
+  transform: translateX(0) !important;
 }
 
 .home-image {
-  width: 100%;
+  max-width: 100%;
   z-index: -1;
-  margin-bottom: -150px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  display: inline-block;
+  /* background: linear-gradient(-180deg,rgba(234,237,237,0),#eaeded); */
+}
+
+.home-content {
+  padding: 20px 10px;
 }
 
 .home-row {
   display: flex;
   flex-wrap: wrap;
   z-index: 1;
-  margin-left: 5px;
-  margin-right: 5px;
+}
+
+.home-row div {
+  z-index: 1;
 }
 
 .home-row .sign-in-experience {
