@@ -100,12 +100,16 @@ function HomeItemCarousel({ carouselItemsData }) {
       const scrollAmount =
         shelfLeft + (direction === "next" ? -divider : divider);
 
+      console.log("Scroll amount", -scrollAmount);
+      console.log("viewportSize", viewportSize);
+
       let viewPortStartCalc;
       direction === "next"
         ? -scrollAmount + divider <= viewAmountTrunc * viewportSize
           ? (viewPortStartCalc = scrollAmount)
           : (viewPortStartCalc = -lastView)
-        : -scrollAmount <= viewportSize
+        : viewportSize - scrollAmount <=
+          viewportSize /* && viewPortStartCalc = Math.max(scrollAmount, 0) */
         ? (viewPortStartCalc = 0)
         : (viewPortStartCalc = scrollAmount);
       setViewPortStart(viewPortStartCalc);

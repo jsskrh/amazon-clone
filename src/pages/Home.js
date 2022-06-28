@@ -31,8 +31,6 @@ function Home() {
     return carouselItems.find((carousel) => carousel.title === carouselTitle);
   };
 
-  console.log(carouselRow("More items to consider"));
-
   useEffect(() => {
     /* make to stop after only running twice */
 
@@ -242,11 +240,14 @@ function Home() {
                 type="alternateItemGroup"
               />
             </div>
-            {/* <ErrorBoundary> */}
+
+            <HomeItemCarousel
+              carouselItemsData={carouselRow("Items to explore")}
+            />
+
             <HomeItemCarousel
               carouselItemsData={carouselRow("More items to consider")}
             />
-            {/* </ErrorBoundary> */}
 
             <div className="home-row">
               <ProductBoxGroup
@@ -304,40 +305,29 @@ function Home() {
               />
             </div>
 
-            {/* <div className="home-row">
-              <ProductLI
-                title="Kindle E readers"
-                link="Shop now"
-                image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Desktop_Dash_Kindle_1x._SY304_CB639752818_.jpg"
-              />
-              <ProductBoxGroup
-                title="Gaming merchandise"
-                link="See more"
-                itemImage="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/June/Fuji_Quad_Apparel_1x._SY116_CB667159060_.jpg"
-                itemName="Apparel"
-              />
-              <ProductLI
-                title="Shop pet supplies"
-                link="See more"
-                image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_Pets_1X._SY304_CB639746743_.jpg"
-              />
-              
-            </div> */}
+            <HomeItemCarousel
+              carouselItemsData={carouselRow("Best Sellers in Books")}
+            />
 
-            <div className="home-row">
-              {/* large-row-selector-grouping */}
-              {/* large-row-selector-grouping */}
-              {/* <ProductLI
-                title="Shop laptops and tablets"
-                link="See more"
-                image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Laptops_379x304_1X_en_US._SY304_CB418608471_.jpg"
-              />
-              <ProductLI
-                title="For your fitness needs"
-                image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_Fitness_1X._SY304_CB639748186_.jpg"
-                link="Shop now"
-              /> */}
-            </div>
+            <HomeItemCarousel
+              carouselItemsData={carouselRow(
+                "Inspired by your shopping trends"
+              )}
+            />
+
+            <HomeItemCarousel
+              carouselItemsData={carouselRow(
+                "Best Sellers in Cell Phones & Accessories"
+              )}
+            />
+
+            <HomeItemCarousel
+              carouselItemsData={carouselRow("Buy in other parts of the store")}
+            />
+
+            <HomeItemCarousel
+              carouselItemsData={carouselRow("Related to items you've viewed")}
+            />
           </div>
         </div>
       </div>

@@ -24,6 +24,7 @@
   line-height: 31px !important;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 21px;
 }
 
 .home-row .carousel-row .title-block-right {
@@ -83,6 +84,14 @@
   position: relative;
   vertical-align: top;
   min-height: 200px;
+}
+
+.home-row .carousel-row .feed-carousel-card:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  min-height: inherit;
 }
 
 .home-row .carousel-row span.list-item {
