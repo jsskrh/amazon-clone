@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/SideMenuListTitle.css";
+import "../styles/SideMenuListTitle.css";
 
 function SideMenuListTitle({ name }) {
   return (

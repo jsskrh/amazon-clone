@@ -1,9 +1,9 @@
 import React from "react";
-import "./styles/CartItem.css";
+import "../styles/CartItem.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 
 function useToggle(initState = false) {
   const [state, setState] = React.useState(initState);

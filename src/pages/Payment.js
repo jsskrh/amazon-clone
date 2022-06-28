@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "../axios";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import CartItem from "../CartItem";
+import CartItem from "../components/CartItem";
 import "../styles/Payment.css";
 import { getCartTotal } from "../reducer";
 import { useStateValue } from "../StateProvider";

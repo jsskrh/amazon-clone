@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/ProductHorizontalSm.css";
-import { useStateValue } from "./StateProvider";
+import "../styles/ProductHorizontalSm.css";
+import { useStateValue } from "../StateProvider";
 
 function ProductHorizontalSm({
   id,

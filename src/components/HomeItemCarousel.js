@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import "./styles/HomeItemCarousel.css";
+import "../styles/HomeItemCarousel.css";
 
 function HomeItemCarousel({ carouselItemsData }) {
   const contentRef = useRef(null);

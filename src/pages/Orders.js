@@ -1,7 +1,7 @@
 import { collection, doc, getDocs } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
-import Order from "../Order";
+import Order from "../components/Order";
 import "../styles/Orders.css";
 import { useStateValue } from "../StateProvider";
 

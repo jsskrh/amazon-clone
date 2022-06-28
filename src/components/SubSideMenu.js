@@ -2,7 +2,7 @@ import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SideMenuListTitle from "./SideMenuListTitle";
 import SideMenuListItem from "./SideMenuListItem";
-import "./styles/SubSideMenu.css";
+import "../styles/SubSideMenu.css";
 
 function SubSideMenu({ data, classes, onChange }) {
   return (

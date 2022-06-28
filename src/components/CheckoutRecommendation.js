@@ -1,6 +1,6 @@
 import React from "react";
 import ProductHorizontalSm from "./ProductHorizontalSm";
-import "./styles/CheckoutRecommendation.css";
+import "../styles/CheckoutRecommendation.css";
 
 function CheckoutRecommendation() {
   return (

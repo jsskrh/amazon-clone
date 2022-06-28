@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import "./styles/SideMenuListItem.css";
+import "../styles/SideMenuListItem.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function SideMenuListItem({

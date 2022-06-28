@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/Checkout.css";
-import CheckoutRecommendation from "../CheckoutRecommendation";
-import Subtotal from "../Subtotal";
+import CheckoutRecommendation from "../components/CheckoutRecommendation";
+import Subtotal from "../components/Subtotal";
 import { useStateValue } from "../StateProvider";
-import ShoppingCart from "../ShoppingCart";
+import ShoppingCart from "../components/ShoppingCart";
 
 function Checkout() {
   const [{ cart }, dispatch] = useStateValue();

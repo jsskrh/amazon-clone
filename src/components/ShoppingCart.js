@@ -1,8 +1,8 @@
 import React from "react";
-import "./styles/ShoppingCart.css";
-import { useStateValue } from "./StateProvider";
+import "../styles/ShoppingCart.css";
+import { useStateValue } from "../StateProvider";
 import CartItem from "./CartItem";
-import { getCartQuantity, getCartTotal } from "./reducer";
+import { getCartQuantity, getCartTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
 
 function ShoppingCart() {

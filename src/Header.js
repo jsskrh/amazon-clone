@@ -10,8 +10,8 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import SideMenu from "./SideMenu";
-import AccountListsItem from "./AccountListsItem";
+import SideMenu from "./components/SideMenu";
+import AccountListsItem from "./components/AccountListsItem";
 
 /* rework nav dropdowns */
 

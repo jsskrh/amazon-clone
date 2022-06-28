@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideMenuListItem from "./SideMenuListItem";
 import SideMenuListTitle from "./SideMenuListTitle";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LanguageIcon from "@mui/icons-material/Language";
-import { auth } from "./firebase";
-import "./styles/SideMenu.css";
+import { auth } from "../firebase";
+import "../styles/SideMenu.css";
 import SubSideMenu from "./SubSideMenu";
-import subMenus from "./submenusData";
+import subMenus from "../submenusData";
 
 function SideMenu({ classes }) {
   const handleAuthentication = () => {

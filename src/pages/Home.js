@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
-import ProductBoxGroup from "../ProductBoxGroup";
-import HomeItemCarousel from "../HomeItemCarousel";
+import ProductBoxGroup from "../components/ProductBoxGroup";
+import HomeItemCarousel from "../components/HomeItemCarousel";
 import carouselItems from "../homepageCarouselData";
 
 function Home() {

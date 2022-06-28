@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/ProductBoxGroup.css";
+import "../styles/ProductBoxGroup.css";
 
 function ProductBoxGroup({
   title,
