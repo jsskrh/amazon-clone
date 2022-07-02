@@ -44,14 +44,12 @@ function Header() {
   const mouseEnterFlyover = (target) => {
     setFlyover([...flyover, target]);
     setHeaderOverlayVisibility(true);
-    console.log("Enter", flyover);
   };
 
   const mouseLeaveFlyover = (target) => {
     const arr = flyover.filter((dropdown) => dropdown !== target);
     setFlyover(arr);
     setHeaderOverlayVisibility(false);
-    console.log("Leave", flyover);
   };
 
   if (headerOverlayVisible === true) {
