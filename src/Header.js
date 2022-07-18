@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import SideMenu from "./components/SideMenu";
 import AccountListsItem from "./components/AccountListsItem";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 /* rework nav dropdowns */
 
@@ -27,6 +28,7 @@ function Header() {
   const [headerOverlayVisible, setHeaderOverlayVisibility] = useState(false);
   const [sideMenuVisible, setSideMenuVisibility] = useState(false);
   const [flyover, setFlyover] = useState([]);
+  const [screenSize, setScreenSize] = useState();
 
   /* const toggleFlyover = (target) => {
     if (flyover.includes(target)) {
@@ -70,10 +72,22 @@ function Header() {
     setSideMenuVisibility(state);
   };
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setScreenSize(window.innerWidth);
+    });
+  }, []);
+
   return (
     <div className="header">
       <div className="header-inner">
         <div className="header-top">
+          <div
+            className="header-bottom-option"
+            onClick={() => handleSideMenuToggle(true)}
+          >
+            <MenuIcon />
+          </div>
           <Link to="/">
             <div className="header-option logo-option">
               <img
@@ -84,7 +98,7 @@ function Header() {
             </div>
           </Link>
 
-          <Link to={"#"}>
+          <Link to={"#"} className="nav-location-link">
             <div className="header-option nav-location">
               <LocationOnIcon className="nav-location-icon" />
               <div className="nav-location-body">
@@ -205,11 +219,13 @@ function Header() {
               </div>
             </form>
           </div>
+
           <div className="header-nav">
             <Link
               to={"#"}
               onMouseEnter={() => mouseEnterFlyover("nav-flyout-clang")}
               onMouseLeave={() => mouseLeaveFlyover("nav-flyout-clang")}
+              className="nav-language-link"
             >
               <div className="header-option nav-language-selector">
                 <span className="line-one hidden-line">-</span>
@@ -222,13 +238,18 @@ function Header() {
 
             <Link
               to={"#"}
-              onMouseEnter={() => mouseEnterFlyover("nav-flyout-account-lists")}
-              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-account-lists")}
+              /* onMouseEnter={() => mouseEnterFlyover("nav-flyout-account-lists")}
+              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-account-lists")} */
               className="flyover-link"
             >
-              <div className="header-option">
-                <span className="line-one">
+              <div className="header-option user-option">
+                <span className="line-one desktop-viewport">
                   Hello, {user ? "Guest" : "Sign in"}
+                </span>
+                <span className="line-one mobile-viewport">
+                  <span>Guest</span>
+                  <ArrowDropDownIcon className="dropdown-arrow" />
+                  <PersonOutlineIcon />
                 </span>
                 <span className="line-two account-arrow-container">
                   Account & Lists
@@ -237,7 +258,7 @@ function Header() {
               </div>
             </Link>
 
-            <Link to="/orders">
+            <Link to="/orders" className="nav-orders-link">
               <div className="header-option">
                 <span className="line-one">Returns</span>
                 <span className="line-two">& Orders</span>
@@ -442,15 +463,30 @@ function Header() {
           </div>
         </div>
 
+        <div className="mobile-search-container">
+          <div className="header-search">
+            <form className="search-bar-container">
+              <div className="nav-fill">
+                <input className="header-search-input" type="text" />
+              </div>
+              <div className="nav-right">
+                <SearchIcon className="header-search-icon" />
+              </div>
+            </form>
+          </div>
+        </div>
+
         <div className="header-bottom">
           <div className="nav-left">
-            <div
-              className="header-bottom-option"
-              onClick={() => handleSideMenuToggle(true)}
-            >
-              <MenuIcon />
-              <span>All</span>
-            </div>
+            {screenSize >= 1280 && (
+              <div
+                className="header-bottom-option"
+                onClick={() => handleSideMenuToggle(true)}
+              >
+                <MenuIcon />
+                <span>All</span>
+              </div>
+            )}
           </div>
           <div className="nav-fill">
             <Link to={"#"}>
@@ -514,10 +550,12 @@ function Header() {
           <SideMenu
             classes={sideMenuVisible ? "side-menu show" : "side-menu"}
           />
-          <CloseIcon
-            className="close-icon"
-            onClick={() => handleSideMenuToggle(false)}
-          />
+          {sideMenuVisible && (
+            <CloseIcon
+              className="close-icon"
+              onClick={() => handleSideMenuToggle(false)}
+            />
+          )}
           <div
             className={
               sideMenuVisible ? "side-menu-overlay show" : "side-menu-overlay"
