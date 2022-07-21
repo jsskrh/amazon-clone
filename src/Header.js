@@ -31,6 +31,8 @@ function Header() {
   const [sideMenuVisible, setSideMenuVisibility] = useState(false);
   const [accountMenuVisible, setAccountMenuVisibile] = useState(false);
   const [flyover, setFlyover] = useState([]);
+  const [navLanguage, setNavLanguage] = useState(false);
+  const [navAccount, setNavAccount] = useState(false);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
 
   /* const toggleFlyover = (target) => {
@@ -46,15 +48,14 @@ function Header() {
     }
   }; */
 
-  const mouseEnterFlyover = (target) => {
-    setFlyover([...flyover, target]);
-    setHeaderOverlayVisibility(true);
+  const toggleNavLanguage = (state) => {
+    setNavLanguage(state);
+    setHeaderOverlayVisibility(state);
   };
 
-  const mouseLeaveFlyover = (target) => {
-    const arr = flyover.filter((dropdown) => dropdown !== target);
-    setFlyover(arr);
-    setHeaderOverlayVisibility(false);
+  const toggleNavAccount = (state) => {
+    setNavAccount(state);
+    setHeaderOverlayVisibility(state);
   };
 
   /* if (headerOverlayVisible === true) {
@@ -237,8 +238,8 @@ function Header() {
           <div className="header-nav">
             <Link
               to={"#"}
-              onMouseEnter={() => mouseEnterFlyover("nav-flyout-clang")}
-              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-clang")}
+              onMouseEnter={() => toggleNavLanguage(true)}
+              onMouseLeave={() => toggleNavLanguage(false)}
               className="nav-language-link"
             >
               <div className="header-option nav-language-selector">
@@ -281,12 +282,8 @@ function Header() {
             {screenSize >= 1280 && (
               <Link
                 to={"#"}
-                onMouseEnter={() =>
-                  mouseEnterFlyover("nav-flyout-account-lists")
-                }
-                onMouseLeave={() =>
-                  mouseLeaveFlyover("nav-flyout-account-lists")
-                }
+                onMouseEnter={() => toggleNavAccount(true)}
+                onMouseLeave={() => toggleNavAccount(false)}
                 className="flyover-link"
               >
                 <div className="header-option user-option">
@@ -333,9 +330,7 @@ function Header() {
         <div className="nav-flyout">
           <div
             className={
-              flyover.includes("nav-flyout-clang")
-                ? "nav-flyout-clang show"
-                : "nav-flyout-clang"
+              navLanguage ? "nav-flyout-clang show" : "nav-flyout-clang"
             }
             onMouseEnter={() => handleHeaderOverlayToggle(true)}
             onMouseLeave={() => handleHeaderOverlayToggle(false)}
@@ -455,7 +450,7 @@ function Header() {
 
           <div
             className={
-              flyover.includes("nav-flyout-account-lists")
+              navAccount
                 ? "nav-flyout-account-lists show"
                 : "nav-flyout-account-lists"
             }
