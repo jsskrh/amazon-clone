@@ -713,6 +713,11 @@
   padding: 12px 10px;
   color: white;
 }
+
+.mobile-nav-location .nav-location-icon {
+  vertical-align: middle;
+}
+
 .mobile-nav-location .location {
   font-size: 13px;
   line-height: 20px;

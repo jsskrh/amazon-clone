@@ -55,7 +55,11 @@ function AccountMenu({ classes }) {
       <div className="side-menu-content">
         <ul className="side-menu-lists main-menu">
           <SideMenuListTitle name="Your Orders" />
-          <SideMenuListItem name="Track & Manage Your Orders" directLink />
+          <SideMenuListItem
+            name="Track & Manage Your Orders"
+            link="/orders"
+            directLink
+          />
           <SideMenuListItem name="Buy Again" directLink />
           <SideMenuListItem name="Returns & Replacements" directLink />
           <SideMenuListItem name="Shipping Rates & Policies" directLink />
