@@ -594,7 +594,7 @@ function Header() {
                 <LocationOnIcon className="nav-location-icon" />
               </span>
               <span className="location">
-                Deliver to Guest - Location placeholder 999999
+                Deliver to Guest - Placeholder town 999999
               </span>
             </div>
           </div>
