@@ -13,6 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import SideMenu from "./components/SideMenu";
 import AccountListsItem from "./components/AccountListsItem";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import AccountMenu from "./components/AccountMenu";
 
 /* rework nav dropdowns */
 
@@ -27,8 +28,9 @@ function Header() {
 
   const [headerOverlayVisible, setHeaderOverlayVisibility] = useState(false);
   const [sideMenuVisible, setSideMenuVisibility] = useState(false);
+  const [accountMenuVisible, setAccountMenuVisibile] = useState(false);
   const [flyover, setFlyover] = useState([]);
-  const [screenSize, setScreenSize] = useState();
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
 
   /* const toggleFlyover = (target) => {
     if (flyover.includes(target)) {
@@ -54,22 +56,33 @@ function Header() {
     setHeaderOverlayVisibility(false);
   };
 
-  if (headerOverlayVisible === true) {
+  /* if (headerOverlayVisible === true) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "visible";
-  }
+  } */
   const handleHeaderOverlayToggle = (state) => {
     setHeaderOverlayVisibility(state);
   };
 
-  const handleSideMenuToggle = (state) => {
-    if (state === true) {
+  useEffect(() => {
+    if (
+      sideMenuVisible ||
+      accountMenuVisible ||
+      headerOverlayVisible === true
+    ) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "visible";
     }
+  }, [sideMenuVisible, accountMenuVisible, headerOverlayVisible]);
+
+  const handleSideMenuToggle = (state) => {
     setSideMenuVisibility(state);
+  };
+
+  const handleAccountMenuToggle = (state) => {
+    setAccountMenuVisibile(state);
   };
 
   useEffect(() => {
@@ -108,8 +121,8 @@ function Header() {
                 <span className="nav-address-container line-two">
                   {user ? (
                     <span>
-                      <span className="nav-address">Satellite Town</span>
-                      <span className="nav-postal-code">102262</span>
+                      <span className="nav-address">Location placeholder</span>
+                      <span className="nav-postal-code">999999</span>
                     </span>
                   ) : (
                     "Select your address"
@@ -236,27 +249,61 @@ function Header() {
               </div>
             </Link>
 
-            <Link
-              to={"#"}
-              /* onMouseEnter={() => mouseEnterFlyover("nav-flyout-account-lists")}
-              onMouseLeave={() => mouseLeaveFlyover("nav-flyout-account-lists")} */
-              className="flyover-link"
-            >
-              <div className="header-option user-option">
-                <span className="line-one desktop-viewport">
-                  Hello, {user ? "Guest" : "Sign in"}
-                </span>
-                <span className="line-one mobile-viewport">
-                  <span>Guest</span>
-                  <ArrowDropDownIcon className="dropdown-arrow" />
-                  <PersonOutlineIcon />
-                </span>
-                <span className="line-two account-arrow-container">
-                  Account & Lists
-                  <ArrowDropDownIcon className="arrow-down account-arrow" />
-                </span>
-              </div>
-            </Link>
+            {screenSize < 1280 && (
+              <Link
+                to={"#"}
+                onClick={() => handleAccountMenuToggle(true)}
+                className="flyover-link"
+              >
+                <div className="header-option user-option">
+                  {user ? (
+                    <span className="line-one mobile-viewport">
+                      <span>Guest</span>
+                      <ArrowDropDownIcon className="dropdown-arrow" />
+                      <PersonOutlineIcon />
+                    </span>
+                  ) : (
+                    <span className="line-one mobile-viewport">
+                      <span>Sign-in</span>
+                      <ArrowDropDownIcon className="dropdown-arrow" />
+                      <PersonOutlineIcon />
+                    </span>
+                  )}
+
+                  <span className="line-two account-arrow-container">
+                    Account & Lists
+                    <ArrowDropDownIcon className="arrow-down account-arrow" />
+                  </span>
+                </div>
+              </Link>
+            )}
+            {screenSize >= 1280 && (
+              <Link
+                to={"#"}
+                onMouseEnter={() =>
+                  mouseEnterFlyover("nav-flyout-account-lists")
+                }
+                onMouseLeave={() =>
+                  mouseLeaveFlyover("nav-flyout-account-lists")
+                }
+                className="flyover-link"
+              >
+                <div className="header-option user-option">
+                  <span className="line-one desktop-viewport">
+                    Hello, {user ? "Guest" : "Sign in"}
+                  </span>
+                  <span className="line-one mobile-viewport">
+                    <span>Guest</span>
+                    <ArrowDropDownIcon className="dropdown-arrow" />
+                    <PersonOutlineIcon />
+                  </span>
+                  <span className="line-two account-arrow-container">
+                    Account & Lists
+                    <ArrowDropDownIcon className="arrow-down account-arrow" />
+                  </span>
+                </div>
+              </Link>
+            )}
 
             <Link to="/orders" className="nav-orders-link">
               <div className="header-option">
@@ -477,16 +524,14 @@ function Header() {
         </div>
 
         <div className="header-bottom">
-          <div className="nav-left">
-            {screenSize >= 1280 && (
-              <div
-                className="header-bottom-option"
-                onClick={() => handleSideMenuToggle(true)}
-              >
-                <MenuIcon />
-                <span>All</span>
-              </div>
-            )}
+          <div className="nav-left desktop-viewport">
+            <div
+              className="header-bottom-option"
+              onClick={() => handleSideMenuToggle(true)}
+            >
+              <MenuIcon />
+              <span>All</span>
+            </div>
           </div>
           <div className="nav-fill">
             <Link to={"#"}>
@@ -546,9 +591,20 @@ function Header() {
           </div>
         </div>
 
+        {user && (
+          <div className="mobile-nav-location-container mobile-viewport">
+            <div className="mobile-nav-location">
+              <span className="location">
+                Deliver to Guest - Location placeholder 999999
+              </span>
+            </div>
+          </div>
+        )}
+
         <div className="nav-side-menu">
           <SideMenu
-            classes={sideMenuVisible ? "side-menu show" : "side-menu"}
+            classes={sideMenuVisible ? "side-menu left show" : "side-menu left"}
+            screenSize={screenSize}
           />
           {sideMenuVisible && (
             <CloseIcon
@@ -561,6 +617,28 @@ function Header() {
               sideMenuVisible ? "side-menu-overlay show" : "side-menu-overlay"
             }
             onClick={() => handleSideMenuToggle(false)}
+          ></div>
+        </div>
+
+        <div className="nav-account-menu mobile-viewport">
+          <AccountMenu
+            classes={
+              accountMenuVisible ? "side-menu right show" : "side-menu right"
+            }
+          />
+          {accountMenuVisible && (
+            <CloseIcon
+              className="close-icon"
+              onClick={() => handleSideMenuToggle(false)}
+            />
+          )}
+          <div
+            className={
+              accountMenuVisible
+                ? "side-menu-overlay show"
+                : "side-menu-overlay"
+            }
+            onClick={() => handleAccountMenuToggle(false)}
           ></div>
         </div>
 

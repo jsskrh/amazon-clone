@@ -1,14 +1,19 @@
 .side-menu {
   height: 100vh;
-  width: 365px;
-  position: absolute;
+  width: 80%;
+  position: fixed;
+  top: 0;
   background: white;
   z-index: 2001;
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 10px 0 rgba(0, 0, 0, 0.4);
-  transition: all 0.3s;
+  transition: transform 0.3s;
   visibility: hidden;
+  /* overflow-y: scroll; */
+}
+
+.side-menu.left {
   transform: translateX(-100%);
 }
 
@@ -19,11 +24,69 @@
 
 .side-menu .menu-customer-profile {
   background: #232f3e;
-  height: 50px;
   width: 100%;
-  display: flex;
   align-items: center;
   color: white;
+}
+
+@media screen and (min-width: 1280px) {
+  .side-menu {
+    width: 365px;
+  }
+
+  .side-menu .menu-customer-profile {
+    display: flex;
+  }
+
+  .side-menu .menu-customer-profile {
+    height: 50px;
+  }
+
+  .side-menu .menu-customer-profile h2 {
+    font-weight: 700;
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .side-menu-content {
+    margin-bottom: 50px;
+  }
+
+  .menu-customer-profile {
+    flex-direction: column;
+  }
+
+  .customer-name-container {
+    width: 100%;
+  }
+
+  .customer-name {
+    padding: 20px;
+    padding-top: 0;
+  }
+
+  .side-header-top .account-circle-icon {
+    margin: 0 !important;
+  }
+}
+
+.side-menu .side-header-top {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.side-menu .link-container {
+  padding: 20px 20px 0 20px;
+  margin-left: auto;
+  display: flex;
+  height: 24px;
+  align-items: center;
+}
+
+.side-menu .side-header-bottom {
+  display: flex;
+  align-items: center;
 }
 
 .side-menu .menu-customer-profile .account-circle-icon {
@@ -33,9 +96,14 @@
   width: 30px;
 }
 
-.side-menu .menu-customer-profile h2 {
+.side-menu .menu-customer-profile .top {
   font-weight: 700;
-  font-size: 19px;
+  font-size: 20px;
+}
+
+.side-menu .menu-customer-profile .bottom {
+  font-weight: 400;
+  font-size: 28px;
 }
 
 .side-menu .side-menu-content {

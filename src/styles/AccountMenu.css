@@ -1,0 +1,10 @@
+div.side-menu.right {
+  right: 0;
+  transform: translateX(100%);
+  /* display: none; */
+}
+
+.side-menu.right.show {
+  transform: translateX(0);
+  /* display: flex; */
+}

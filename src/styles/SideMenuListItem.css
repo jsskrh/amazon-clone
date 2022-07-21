@@ -1,8 +1,13 @@
-.side-menu .side-menu-content .side-menu-lists li a,
-.sub-menu-back {
-  padding: 13px 20px 13px 36px;
+.side-menu .side-menu-content .side-menu-lists li a {
+  padding: 15px 20px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .side-menu .side-menu-content .side-menu-lists li a {
+    padding: 13px 20px 13px 36px;
+  }
 }
 
 .side-menu .side-menu-content .side-menu-lists li a:hover,
@@ -29,9 +34,15 @@
 }
 
 .side-menu .side-menu-content .side-menu-lists li a span {
-  font-size: 14px;
+  font-size: 16px;
   color: #111;
   font-weight: 500;
+}
+
+@media screen and (min-width: 1280px) {
+  .side-menu .side-menu-content .side-menu-lists li a span {
+    font-size: 14px;
+  }
 }
 
 .side-menu .side-menu-content .side-menu-lists li a:hover .arrow-forward-icon {

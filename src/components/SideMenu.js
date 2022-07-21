@@ -10,7 +10,7 @@ import "../styles/SideMenu.css";
 import SubSideMenu from "./SubSideMenu";
 import subMenus from "../submenusData";
 
-function SideMenu({ classes }) {
+function SideMenu({ classes, screenSize }) {
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
@@ -39,12 +39,29 @@ function SideMenu({ classes }) {
     <div className={classes}>
       <Link to={"#"}>
         <div className="menu-customer-profile">
-          <div className="customer-avatar-container">
-            <AccountCircleIcon className="account-circle-icon" />
+          <div className="side-header-top mobile-viewport">
+            <span className="link-container">
+              <span className="link-text">
+                {user ? "Guest's Account" : "Sign-In"}
+              </span>
+              <AccountCircleIcon className="account-circle-icon" />
+            </span>
           </div>
-          <div className="customer-name-container">
-            <div className="customer-name">
-              <h2>Hello, {user ? "Guest" : "Sign-In"}</h2>
+          <div className="side-header-bottom">
+            <div className="customer-avatar-container desktop-viewport">
+              <AccountCircleIcon className="account-circle-icon" />
+            </div>
+            <div className="customer-name-container">
+              {screenSize >= 1280 ? (
+                <div className="customer-name">
+                  <h2>Hello, {user ? "Guest" : "Sign-In"}</h2>
+                </div>
+              ) : (
+                <div className="customer-name">
+                  <h2 className="top">Browse</h2>
+                  <h2 className="bottom">Amazon</h2>
+                </div>
+              )}
             </div>
           </div>
         </div>
