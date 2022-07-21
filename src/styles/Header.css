@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 1280px) {
   .mobile-viewport {
-    display: none;
+    display: none !important;
   }
 
   .header {
@@ -397,7 +397,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 1px;
+  bottom: 4px;
   margin-left: auto;
   margin-right: auto;
   width: 10px;
@@ -673,8 +673,10 @@
   white-space: nowrap;
 }
 
-.header-bottom .header-bottom-option:hover {
-  color: #e47911;
+@media screen and (max-width: 1280px) {
+  .header-bottom .header-bottom-option:hover {
+    color: #e47911;
+  }
 }
 
 @media screen and (min-width: 1280px) {

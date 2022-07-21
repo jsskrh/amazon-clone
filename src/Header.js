@@ -10,6 +10,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import SideMenu from "./components/SideMenu";
 import AccountListsItem from "./components/AccountListsItem";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -316,7 +317,7 @@ function Header() {
               <div className="header-basket header-option">
                 <div className="cart-container">
                   <div className="cart-container-inner">
-                    <ShoppingCartIcon className="cart-icon" />
+                    <ShoppingBagIcon className="cart-icon" />
                     <span className="header-cart-count">{cart?.length}</span>
                   </div>
                 </div>
@@ -594,6 +595,9 @@ function Header() {
         {user && (
           <div className="mobile-nav-location-container mobile-viewport">
             <div className="mobile-nav-location">
+              <span className="location-icon">
+                <LocationOnIcon className="nav-location-icon" />
+              </span>
               <span className="location">
                 Deliver to Guest - Location placeholder 999999
               </span>
