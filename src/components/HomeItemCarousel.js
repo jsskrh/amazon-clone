@@ -26,41 +26,6 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
     );
   };
 
-  useEffect(() => {
-    const { current } = shelfRef;
-    if (current) {
-      const { clientWidth: viewportSize } = contentRef.current;
-      const { clientWidth: shelfSize, offsetLeft: shelfLeft } =
-        shelfRef.current;
-      const viewAmount = shelfSize / viewportSize;
-      const viewAmountCeil = Math.ceil(shelfSize / viewportSize);
-      const viewAmountTrunc = Math.trunc(shelfSize / viewportSize);
-      const lastView =
-        viewportSize * (viewAmountTrunc - 1) +
-        viewportSize * (viewAmount - viewAmountTrunc);
-      setViewPortEnd(lastView);
-    }
-
-    if (contentRef.current && scrollTrackRef.current) {
-      try {
-        const ref = contentRef.current;
-        const shelf = shelfRef.current;
-        const { clientWidth: trackSize } = scrollTrackRef.current;
-        observer.current = new ResizeObserver(() => {
-          handleResize(ref, trackSize);
-        });
-        observer.current.observe(shelf);
-        shelf.addEventListener("transitionrun", handleThumbPosition);
-        return () => {
-          observer.current?.unobserve(shelf);
-          shelf.removeEventListener("transitionrun", handleThumbPosition);
-        };
-      } catch (error) {
-        console.log("error:", error);
-      }
-    }
-  }, []);
-
   const handleThumbPosition = useEffect(() => {
     if (
       !contentRef.current ||
@@ -76,7 +41,7 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
     newStart = Math.min(newStart, trackWidth - thumbWidth);
     const thumb = scrollThumbRef.current;
     thumb.style.left = `${newStart}px`;
-  }, [viewPortStart]);
+  }, [viewPortStart, thumbWidth]);
 
   const handleScrollButton = (direction) => {
     const { current } = shelfRef;
@@ -118,6 +83,39 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
 
   useEffect(() => {
     const { current } = shelfRef;
+    if (current) {
+      const { clientWidth: viewportSize } = contentRef.current;
+      const { clientWidth: shelfSize } = shelfRef.current;
+      const viewAmount = shelfSize / viewportSize;
+      const viewAmountTrunc = Math.trunc(shelfSize / viewportSize);
+      const lastView =
+        viewportSize * (viewAmountTrunc - 1) +
+        viewportSize * (viewAmount - viewAmountTrunc);
+      setViewPortEnd(lastView);
+    }
+
+    if (contentRef.current && scrollTrackRef.current) {
+      try {
+        const ref = contentRef.current;
+        const shelf = shelfRef.current;
+        const { clientWidth: trackSize } = scrollTrackRef.current;
+        observer.current = new ResizeObserver(() => {
+          handleResize(ref, trackSize);
+        });
+        observer.current.observe(shelf);
+        shelf.addEventListener("transitionrun", handleThumbPosition);
+        return () => {
+          observer.current?.unobserve(shelf);
+          shelf.removeEventListener("transitionrun", handleThumbPosition);
+        };
+      } catch (error) {
+        console.log("error:", error);
+      }
+    }
+  }, [handleThumbPosition]);
+
+  useEffect(() => {
+    const { current } = shelfRef;
     current.style.left = `${viewPortStart}px`;
   }, [viewPortStart]);
 
@@ -150,7 +148,6 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
       e.preventDefault();
       e.stopPropagation();
       if (isDragging) {
-        const { offsetWidth: contentOffsetWidth } = shelfRef.current;
         const { clientWidth: scrollTrackWidth } = scrollTrackRef.current;
 
         // Subtract the current mouse x position from where you started to get the pixel difference in mouse position. Multiply by ratio of visible content height to thumb height to scale up the difference for content scrolling.
@@ -163,7 +160,13 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
         setViewPortStart(-newScrollLeft);
       }
     },
-    [isDragging, scrollStartPosition, thumbWidth]
+    [
+      isDragging,
+      scrollStartPosition,
+      thumbWidth,
+      initialScrollLeft,
+      viewPortEnd,
+    ]
   );
 
   useEffect(() => {
@@ -199,11 +202,15 @@ function HomeItemCarousel({ carouselItemsData, checkout }) {
                 return (
                   <li className="feed-carousel-card">
                     <span className="list-item">
-                      <a className="a-list-item" href="#">
+                      <a className="a-list-item" href="/#">
                         {checkout ? (
-                          <img className="item-image" src={item.image} />
+                          <img
+                            className="item-image"
+                            alt="item"
+                            src={item.image}
+                          />
                         ) : (
-                          <img className="item-image" src={item} />
+                          <img className="item-image" alt="item" src={item} />
                         )}
                       </a>
                     </span>

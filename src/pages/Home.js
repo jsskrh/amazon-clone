@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../styles/Home.css";
 import ProductBoxGroup from "../components/ProductBoxGroup";
 import HomeItemCarousel from "../components/HomeItemCarousel";
@@ -16,17 +16,20 @@ function Home() {
     "https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg",
   ];
 
-  const changeImage = (newState) => {
-    /* console.log(newState); */
-    let current = carouselIndex;
-    if (newState === "prev") {
-      current === 0 ? (current = 4) : (current += -1);
-    } else if ("next") {
-      current === 4 ? (current = 0) : (current += 1);
-    }
-    setCarouselIndex(current);
-    /* console.log("previous: ", carouselIndex); */
-  };
+  const changeImage = useCallback(
+    (newState) => {
+      /* console.log(newState); */
+      let current = carouselIndex;
+      if (newState === "prev") {
+        current === 0 ? (current = 4) : (current += -1);
+      } else if ("next") {
+        current === 4 ? (current = 0) : (current += 1);
+      }
+      setCarouselIndex(current);
+      /* console.log("previous: ", carouselIndex); */
+    },
+    [carouselIndex]
+  );
 
   const carouselRow = (carouselTitle) => {
     return carouselItems.find((carousel) => carousel.title === carouselTitle);
@@ -40,7 +43,7 @@ function Home() {
     }, 5000);
 
     return () => clearInterval(intervalID);
-  }, [carouselIndex]);
+  }, [carouselIndex, changeImage]);
 
   return (
     <div className="home">
@@ -71,7 +74,7 @@ function Home() {
                         : "home-image-container translate-right"
                     }
                   >
-                    <img src={image} className="home-image" />
+                    <img src={image} alt="banner" className="home-image" />
                   </div>
                 );
               })}

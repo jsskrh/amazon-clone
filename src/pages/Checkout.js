@@ -7,7 +7,7 @@ import ShoppingCart from "../components/ShoppingCart";
 import HomeItemCarousel from "../components/HomeItemCarousel";
 
 function Checkout() {
-  const [{ cart }, dispatch] = useStateValue();
+  const [{ cart }] = useStateValue();
 
   const chechoutRecommendations = {
     title: "Checkout Recommendations",

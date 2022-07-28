@@ -11,7 +11,7 @@ function MobileCarouselCard({ title, link, image }) {
               <span className="carousel-item-name">{title}</span>
             </div>
             <div className="carousel-item-image-container">
-              <img className="carousel-item-image" src={image} />
+              <img className="carousel-item-image" alt="item" src={image} />
             </div>
           </div>
         </div>

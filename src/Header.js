@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
@@ -25,12 +24,11 @@ function Header() {
     }
   };
 
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ cart, user }] = useStateValue();
 
   const [headerOverlayVisible, setHeaderOverlayVisibility] = useState(false);
   const [sideMenuVisible, setSideMenuVisibility] = useState(false);
   const [accountMenuVisible, setAccountMenuVisibile] = useState(false);
-  const [flyover, setFlyover] = useState([]);
   const [navLanguage, setNavLanguage] = useState(false);
   const [navAccount, setNavAccount] = useState(false);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -245,7 +243,7 @@ function Header() {
               <div className="header-option nav-language-selector">
                 <span className="line-one hidden-line">-</span>
                 <span className="line-two">
-                  <span class="fi fi-us"></span>
+                  {flags && <span class="fi fi-us"></span>}
                   <ArrowDropDownIcon className="arrow-down" />
                 </span>
               </div>
@@ -341,7 +339,7 @@ function Header() {
             <div className="nav-flyout-clang-content">
               <span className="clang-item">
                 Change language
-                <a href="#" className="clang-learn-more">
+                <a href="/#" className="clang-learn-more">
                   Learn more
                 </a>
               </span>
@@ -354,7 +352,7 @@ function Header() {
 
               <div className="divider"></div>
 
-              <a href="#" className="clang-link">
+              <a href="/#" className="clang-link">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -362,7 +360,7 @@ function Header() {
                   <span>español - ES</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -370,7 +368,7 @@ function Header() {
                   <span>العربية - AR</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -378,7 +376,7 @@ function Header() {
                   <span>Deutsch - DE</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -386,7 +384,7 @@ function Header() {
                   <span>עברית - HE</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -394,7 +392,7 @@ function Header() {
                   <span>한국어 - KO</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -402,7 +400,7 @@ function Header() {
                   <span>português - PT</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -410,7 +408,7 @@ function Header() {
                   <span>中文 (简体) - ZH</span>
                 </span>
               </a>
-              <a href="#">
+              <a href="/#">
                 <span className="clang-item">
                   <div className="radio-container">
                     <div className="radio-inactive"></div>
@@ -423,13 +421,13 @@ function Header() {
 
               <span className="clang-item">
                 Change currency
-                <a href="#" className="clang-learn-more">
+                <a href="/#" className="clang-learn-more">
                   Learn more
                 </a>
               </span>
               <span className="clang-item space-between">
                 <span>$ - USD - US Dollar</span>
-                <a href="#" className="clang-change">
+                <a href="/#" className="clang-change">
                   Change
                 </a>
               </span>
@@ -441,7 +439,7 @@ function Header() {
               </span>
 
               <span className="clang-item">
-                <a href="#" className="clang-change-cr">
+                <a href="/#" className="clang-change-cr">
                   Change country/region.
                 </a>
               </span>
@@ -463,7 +461,7 @@ function Header() {
             <div className="account-lists-content">
               <div className="lists-container">
                 <h3 className="account-lists-title">Your Lists</h3>
-                <AccountListsItem placeholder="Create List" link="#" />
+                <AccountListsItem placeholder="Create List" link="/#" />
                 <AccountListsItem
                   placeholder="Find a List or Registry"
                   link="#"

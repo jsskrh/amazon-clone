@@ -1,11 +1,9 @@
 import React from "react";
 import { auth } from "../firebase";
 import { useStateValue } from "../StateProvider";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../styles/AccountMenu.css";
-import { Link } from "react-router-dom";
 import SideMenuListTitle from "./SideMenuListTitle";
 import SideMenuListItem from "./SideMenuListItem";
 
@@ -16,7 +14,7 @@ function AccountMenu({ classes }) {
     }
   };
 
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   /* const [menu, setMenu] = useState("");
   const [list, setList] = useState([]);
