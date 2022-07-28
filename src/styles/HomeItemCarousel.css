@@ -6,11 +6,18 @@
 }
 
 .home-row .carousel-row {
-  padding: 10px 20px;
-  margin: 0 10px 20px 10px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
   background: white;
   width: 100%;
   overflow-x: hidden;
+}
+
+@media screen and (min-width: 1280px) {
+  .home-row .carousel-row {
+    margin: 0 10px 20px 10px;
+    padding: 10px 20px;
+  }
 }
 
 .home-row .carousel-row .row-title-block {
@@ -25,6 +32,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 21px;
+  font-weight: 200;
+}
+
+@media screen and (min-width: 1280px) {
+  .home-row .carousel-row .row-title {
+    font-weight: 700;
+  }
 }
 
 .home-row .carousel-row .title-block-right {
@@ -48,9 +62,15 @@
   width: 100%;
   min-height: 220px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   margin: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .home-row .carousel-row .feed-carousel-viewport {
+    overflow: hidden;
+  }
 }
 
 .home-row .carousel-row ul.feed-carousel-shelf {
@@ -123,6 +143,13 @@
   -ms-user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .carousel-row .feed-carousel .slider {
+    display: block;
+  }
 }
 
 .carousel-row .feed-carousel .slider.extreme {
@@ -164,7 +191,7 @@
 }
 
 .home-row .carousel-row .feed-carousel .feed-scrollbar {
-  display: block;
+  display: none;
   position: absolute;
   height: 6px;
   bottom: 0;
@@ -174,6 +201,12 @@
   -ms-user-select: none;
   -webkit-user-select: none;
   font-size: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .home-row .carousel-row .feed-carousel .feed-scrollbar {
+    display: block;
+  }
 }
 
 .home-row .carousel-row .feed-carousel .feed-scrollbar-track {

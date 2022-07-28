@@ -1,15 +1,16 @@
 .product-box-group {
-  padding: 0 10px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
 }
 
 @media screen and (min-width: 1280px) {
   .product-box-group {
     width: 25%;
+    padding: 0 10px;
+    margin-bottom: 20px;
   }
 }
 
@@ -39,9 +40,15 @@
 
 .product-box-group .title {
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 200;
   padding: 0 20px;
   margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1280px) {
+  .product-box-group .title {
+    font-weight: 700;
+  }
 }
 
 .product-box-group .items-container {
