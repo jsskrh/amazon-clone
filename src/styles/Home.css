@@ -10,9 +10,16 @@
 }
 
 .home-carousel {
-  max-height: 230px;
+  max-height: 170px;
+  /* max-height: 230px; */
   /* height: 230px; */
   transition: all 240ms ease-out 0s;
+}
+
+@media screen and (min-width: 1280px) {
+  .home-carousel {
+    max-height: 230px;
+  }
 }
 
 .home-carousel-inner {
@@ -107,6 +114,86 @@
   z-index: -1;
   display: inline-block;
   /* background: linear-gradient(-180deg,rgba(234,237,237,0),#eaeded); */
+}
+
+.mobile-items-carousel {
+  display: flex;
+  margin: 5px 8px 5px 8px;
+  z-index: 100;
+  overflow-x: scroll;
+}
+
+.mobile-items-carousel .carousel-item-container {
+  border-radius: 4px;
+  margin-right: 8px;
+  background-color: #fff;
+}
+
+.mobile-items-carousel .carousel-item {
+  /* padding: 5px; */
+  font-weight: 300;
+  width: 135px;
+}
+
+.mobile-items-carousel .carousel-item-content {
+  display: flex;
+  flex-direction: column;
+  height: 170px;
+  position: relative;
+}
+
+.mobile-items-carousel .carousel-item-wrapper {
+  position: absolute;
+  border-style: solid;
+  height: 162px;
+  width: 127px;
+  border-width: 4px 4px 0 4px;
+  -webkit-border-image: -webkit-gradient(
+      linear,
+      0 100%,
+      0 0,
+      from(rgba(0, 0, 0, 0)),
+      to(white)
+    )
+    1 100%;
+  -webkit-border-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), white)
+    1 100%;
+  -moz-border-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), white) 1
+    100%;
+  -o-border-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), white) 1 100%;
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0), white) 1 100%;
+}
+
+.mobile-items-carousel .carousel-item-name-container {
+  flex: 1;
+  display: flex;
+}
+
+.mobile-items-carousel .carousel-item-name {
+  line-height: 1.3em;
+  /* font-size: 1.6rem; */
+  /* max-height: 1.6em; */
+  font-size: 14px;
+  /* padding: 5px 5px 0 5px; */
+  /* margin-top: 5px; */
+  white-space: wrap;
+  align-self: center;
+  margin: 0 10px;
+}
+
+.mobile-items-carousel .carousel-item-image-container {
+  /* margin-top: 26px; */
+  display: flex;
+  height: 125px;
+  justify-content: center;
+  /* margin: auto; */
+  box-sizing: border-box;
+}
+
+.mobile-items-carousel .carousel-item-image {
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 0 4px 4px;
 }
 
 .home-content {

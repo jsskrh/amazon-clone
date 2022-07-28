@@ -3,6 +3,7 @@ import "../styles/Home.css";
 import ProductBoxGroup from "../components/ProductBoxGroup";
 import HomeItemCarousel from "../components/HomeItemCarousel";
 import carouselItems from "../homepageCarouselData";
+import MobileCarouselCard from "../components/MobileCarouselCard";
 
 function Home() {
   const [carouselIndex, setCarouselIndex] = useState(2);
@@ -49,7 +50,7 @@ function Home() {
 
           <div className="home-carousel-inner">
             <div
-              className="carousel-slider carousel-slider-left"
+              className="carousel-slider carousel-slider-left desktop-viewport"
               onClick={() => changeImage("prev")}
             >
               <div className="slider-arrow-container">
@@ -76,7 +77,7 @@ function Home() {
               })}
             </div>
             <div
-              className="carousel-slider carousel-slider-right"
+              className="carousel-slider carousel-slider-right desktop-viewport"
               onClick={() => changeImage("next")}
             >
               <div className="slider-arrow-container">
@@ -86,6 +87,29 @@ function Home() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mobile-items-carousel mobile-viewport">
+          <MobileCarouselCard
+            title="Computers & Accessories"
+            link="#"
+            image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_PC_1x._SY304_CB431800965_.jpg"
+          />
+          <MobileCarouselCard
+            title="Shop Deals & Promotions"
+            link="#"
+            image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/October/Fuji_D2_45M_en_US_1x._CB418309979_.jpg"
+          />
+          <MobileCarouselCard
+            title="Health & Personal Care"
+            link="#"
+            image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2022/FathersDay/Fuji_FathersDay22_Dash_2X._SY608_CB636880260_.jpg"
+          />
+          <MobileCarouselCard
+            title="Beauty picks"
+            link="#"
+            image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Beauty_2x._SY608_CB432774344_.jpg"
+          />
         </div>
 
         <div className="home-content-container">
