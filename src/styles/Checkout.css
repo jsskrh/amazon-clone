@@ -8,7 +8,14 @@
 
 .checkout-top {
   display: flex;
-  padding: 18px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1280px) {
+  .checkout-top {
+    flex-direction: row;
+    padding: 18px;
+  }
 }
 
 .checkout-left p,
@@ -19,7 +26,6 @@
 
 .checkout-left {
   flex: 1;
-  padding-right: 20px;
 }
 
 .checkout-left .body {
@@ -29,6 +35,22 @@
 .checkout-left .container {
   padding: 20px 0 15px 0;
   margin-bottom: 20px;
+}
+
+.checkout-left .saved-items,
+.checkout-left .about {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .checkout-left {
+    padding-right: 20px;
+  }
+
+  .checkout-left .saved-items,
+  .checkout-left .about {
+    display: block;
+  }
 }
 
 .checkout-left .saved-items-heading {
@@ -67,6 +89,16 @@
 .checkout-left .about .text {
   font-size: 12px;
   line-height: 16px;
+}
+
+.checkout-right .carousel {
+  display: block;
+}
+
+@media screen and (min-width: 1280px) {
+  .checkout-right .carousel {
+    display: none;
+  }
 }
 
 .checkout-bottom > .container {

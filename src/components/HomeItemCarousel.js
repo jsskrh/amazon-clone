@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "../styles/HomeItemCarousel.css";
 
-function HomeItemCarousel({ carouselItemsData }) {
+function HomeItemCarousel({ carouselItemsData, checkout }) {
   const contentRef = useRef(null);
   const shelfRef = useRef(null);
   const scrollTrackRef = useRef(null);
@@ -184,9 +184,11 @@ function HomeItemCarousel({ carouselItemsData }) {
           <h2 className="row-title">{carouselItemsData.title}</h2>
           {carouselItemsData.link && (
             <span className="title-block-right">
-              <a href={carouselItemsData.link}>
-                {carouselItemsData.linkPlaceholder}
-              </a>
+              {carouselItemsData.link && (
+                <a href={carouselItemsData.link}>
+                  {carouselItemsData.linkPlaceholder}
+                </a>
+              )}
             </span>
           )}
         </div>
@@ -198,7 +200,11 @@ function HomeItemCarousel({ carouselItemsData }) {
                   <li className="feed-carousel-card">
                     <span className="list-item">
                       <a className="a-list-item" href="#">
-                        <img className="item-image" src={item} />
+                        {checkout ? (
+                          <img className="item-image" src={item.image} />
+                        ) : (
+                          <img className="item-image" src={item} />
+                        )}
                       </a>
                     </span>
                   </li>

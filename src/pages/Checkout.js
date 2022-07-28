@@ -4,9 +4,49 @@ import CheckoutRecommendation from "../components/CheckoutRecommendation";
 import Subtotal from "../components/Subtotal";
 import { useStateValue } from "../StateProvider";
 import ShoppingCart from "../components/ShoppingCart";
+import HomeItemCarousel from "../components/HomeItemCarousel";
 
 function Checkout() {
   const [{ cart }, dispatch] = useStateValue();
+
+  const chechoutRecommendations = {
+    title: "Checkout Recommendations",
+    items: [
+      {
+        name: "Kaisi 18 in 1 Professional MacBook Repair Tool Kit Precision MacBook Screwdriver Set, Pentalobe Screwdriver, Tri Wing, Torx and Phillips Screwdriver for MacBook Pro & MacBook Air with Retina Display",
+        image: "https://m.media-amazon.com/images/I/71eVjWy8QAL._AC_AA360_.jpg",
+        price: 6681.19,
+        rating: 5,
+        numberOfPruchases: 526,
+        id: 2000,
+      },
+      {
+        name: "Repair Tool Kit for MacBook, TECKMAN Macbook Screwdriver Set with P5 Pentalobe Screwdriver,T5 Torx and Ph000 Phillips Screwdrivers for MacBook Air & Pro with Retina",
+        image: "https://m.media-amazon.com/images/I/61Vrq+kf5hL._AC_AA360_.jpg",
+        price: 2647.51,
+        rating: 5,
+        numberOfPruchases: 515,
+        id: 2001,
+      },
+      {
+        name: "SanDisk Ultra 3D NAND 1TB Internal SSD - SATA III 6 Gb/s, 2.5'/7mm, Up to 560 MB/s - SDSSDH3-1T00-G25",
+        image:
+          "https://m.media-amazon.com/images/I/71ETKYdbjLL._AC_UY436_QL65_.jpg",
+        price: 44612.61,
+        rating: 5,
+        numberOfPruchases: 25611,
+        id: 2002,
+      },
+      {
+        name: "Kaisi 70 in 1 Precision Screwdriver Set Professional Electronics Repair Tool Kit with 56 Bits Magnetic Driver Kit, Anti Static Wrist Band, Spudgers for Tablet, MacBook, PC, iPhone, Xbox, Game Console",
+        image: "https://m.media-amazon.com/images/I/71r7vu0VveL._AC_AA360_.jpg",
+        price: 7572.61,
+        rating: 5,
+        numberOfPruchases: 5811,
+        id: 2003,
+      },
+    ],
+  };
 
   return (
     <div className="checkout">
@@ -51,10 +91,14 @@ function Checkout() {
         </div>
         <div className="checkout-right">
           {cart?.length !== 0 && <Subtotal />}
-          <CheckoutRecommendation />
+          <CheckoutRecommendation itemsArray={chechoutRecommendations.items} />
+          <HomeItemCarousel
+            carouselItemsData={chechoutRecommendations}
+            checkout
+          />
         </div>
       </div>
-      <div className="checkout-bottom">
+      {/* <div className="checkout-bottom">
         <div className="container">
           <div className="top-header">
             <div className="heading-container">
@@ -67,7 +111,7 @@ function Checkout() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

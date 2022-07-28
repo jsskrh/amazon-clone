@@ -4,6 +4,13 @@
   border-radius: 8px;
   width: 262px;
   margin-bottom: 24px;
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .checkout-right .recommendations-container {
+    display: block;
+  }
 }
 
 .checkout-right .recommendations-container {

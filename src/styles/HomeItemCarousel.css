@@ -13,6 +13,10 @@
   overflow-x: hidden;
 }
 
+.checkout .home-row .carousel-row {
+  width: auto;
+}
+
 @media screen and (min-width: 1280px) {
   .home-row .carousel-row {
     margin: 0 10px 20px 10px;
